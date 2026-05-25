@@ -62,16 +62,19 @@ sudo apt install vsftpd -y
 sudo systemctl start vsftpd
 sudo systemctl enable vsftpd
 
+---
 
-1. Endpoint Monitoring and Troubleshooting
+## Endpoint Monitoring and Troubleshooting
 
 I deployed Microsoft Sysmon on the Windows endpoint to gather system events.
 
-Event Viewer Snap-in Crash
+# Event Viewer Snap-in Crash
 
 During log analysis, the Windows Event Viewer crashed with a System.InvalidOperationException error because of high log volume.
 
-Process Analysis (Event ID 1)
+![Event Viewer Crash](./images/event_viewer_error.png)
+
+## Process Analysis (Event ID 1)
 
 I analyzed Event ID 1 (Process Creation) to check parent-child process relationships. Using the filtered logs, I verified the execution details of system tools:
 
@@ -79,11 +82,11 @@ Launching Notepad from Windows Search showed the parent process as taskhostw.exe
 
 Launching commands like whoami successfully generated an Event ID 1 log, showing the exact image path and process ID.
 
-2. Network Reconnaissance and Firewall Configuration
+## Network Reconnaissance and Firewall Configuration
 
 From the Ubuntu machine, I used Nmap to scan port 445 (SMB) on the Windows host.
 
-Port Filtered State
+## Port Filtered State
 
 The initial scan returned a filtered state. This happened because the default Windows Defender Firewall profiles were active and silently dropping incoming TCP probes.
 
@@ -94,11 +97,11 @@ To allow the network traffic to reach the OS layer so Sysmon could log the activ
 netsh advfirewall set allprofiles state off
 
 
-Capturing Event ID 3
+## Capturing Event ID 3
 
 After disabling the firewall and scanning the correct Windows IP address (10.0.2.3), the packets successfully reached the host. This immediately generated an Event ID 3 (Network Connection Detected) log inside Sysmon, capturing the source IP, destination IP, and target port.
 
-3. Packet Inspection with Wireshark
+## Packet Inspection with Wireshark
 
 I configured Wireshark on Ubuntu to capture traffic on the virtual network interface. To do this without root permissions, I reconfigured wireshark-common and managed dumpcap privileges.
 
@@ -106,7 +109,7 @@ Plaintext FTP Credential Capture
 
 To test unencrypted traffic, I configured a vsFTPd server on Ubuntu and connected to it from the Windows machine. Using Wireshark's "Follow TCP Stream" feature, I recovered the login credentials directly from the traffic stream because FTP transmits data in plain text.
 
-Conclusion and Skills Verified
+## Conclusion and Skills Verified
 
 Log Analysis: Filtering and tracking Sysmon Event ID 1 and Event ID 3.
 
