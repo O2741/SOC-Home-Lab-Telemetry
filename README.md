@@ -18,7 +18,7 @@ This home lab was built to simulate network reconnaissance, analyze endpoint log
 
 To replicate this environment, the following configuration and installation steps were performed:
 
-1. Network & Virtual Machine Configuration
+## Network & Virtual Machine Configuration
 
 Installed Oracle VirtualBox and created two virtual machines: Windows 11 (Target) and Ubuntu Linux (Attacker).
 
@@ -30,7 +30,7 @@ Configured a NAT Network (subnet 10.0.2.0/24) in VirtualBox preferences to allow
 
 Assigned static IP addresses to ensure reliable communication (Windows host: 10.0.2.3).
 
-2. Windows Endpoint Setup (Sysmon Installation)
+## Windows Endpoint Setup (Sysmon Installation)
 
 Downloaded Microsoft Sysmon from the official Sysinternals suite.
 
