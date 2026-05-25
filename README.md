@@ -33,7 +33,7 @@ Configured a NAT Network (subnet 10.0.2.0/24) in VirtualBox preferences to allow
 
 Assigned static IP addresses to ensure reliable communication (Windows host: 10.0.2.3).
 
-###Windows Endpoint Setup (Sysmon Installation)
+### Windows Endpoint Setup (Sysmon Installation)
 
 Downloaded Microsoft Sysmon from the official Sysinternals suite.
 
@@ -43,21 +43,18 @@ Installed Sysmon via administrative PowerShell/Command Prompt using the command:
 
 sysmon.exe -i sysmonconfig-export.xml
 
-
 Verified that the Microsoft-Windows-Sysmon/Operational event log channel was successfully created and active in the Windows Event Viewer.
 
-###Ubuntu Attacker Setup (Wireshark & vsFTPd Installation)
+### Ubuntu Attacker Setup (Wireshark & vsFTPd Installation)
 
 Installed Nmap and Wireshark on the Ubuntu VM:
 
 sudo apt update && sudo apt install nmap wireshark -y
 
-
 Configured Wireshark to run without root privileges by reconfiguring the package and adding the user to the wireshark group:
 
 sudo dpkg-reconfigure wireshark-common
 sudo usermod -aG wireshark $USER
-
 
 Installed and configured vsFTPd (Very Secure FTP Daemon) to act as our plaintext FTP target:
 
@@ -99,7 +96,7 @@ The initial scan returned a filtered state. This happened because the default Wi
 
 ![Nmap Filtered Scan](./images/nmap_filtered.png)
 
-Disabling Firewall for Telemetry Capture
+## Disabling Firewall for Telemetry Capture
 
 To allow the network traffic to reach the OS layer so Sysmon could log the activity, I disabled the firewall profiles via Windows CMD:
 
@@ -117,7 +114,7 @@ After disabling the firewall and scanning the correct Windows IP address (10.0.2
 
 I configured Wireshark on Ubuntu to capture traffic on the virtual network interface. To do this without root permissions, I reconfigured wireshark-common and managed dumpcap privileges.
 
-Plaintext FTP Credential Capture
+## Plaintext FTP Credential Capture
 
 To test unencrypted traffic, I configured a vsFTPd server on Ubuntu and connected to it from the Windows machine. Using Wireshark's "Follow TCP Stream" feature, I recovered the login credentials directly from the traffic stream because FTP transmits data in plain text.
 
