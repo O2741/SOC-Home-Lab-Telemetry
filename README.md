@@ -1,26 +1,28 @@
-Home SOC Lab: Endpoint Telemetry and Network Forensics
+# Home SOC Lab: Endpoint Telemetry and Network Forensics
 
-Project Overview
+## Project Overview
 
 This home lab was built to simulate network reconnaissance, analyze endpoint logs, and inspect network traffic in an isolated environment. The goal was to configure security monitoring tools and understand how host-based defenses impact network visibility.
 
-Technical Stack
+## Technical Stack
 
-Hypervisor: Oracle VirtualBox
+* Hypervisor: Oracle VirtualBox
 
-Target Machine: Windows 11
+* Target Machine: Windows 11
 
-Attacker/Analyst Machine: Ubuntu Linux
+* Attacker/Analyst Machine: Ubuntu Linux
 
-Tools: Microsoft Sysmon, Wireshark, Windows Event Viewer, Nmap, vsFTPd
+* Tools: Microsoft Sysmon, Wireshark, Windows Event Viewer, Nmap, vsFTPd
 
-🛠️ Environment Setup & Installation
+# Environment Setup & Installation
 
 To replicate this environment, the following configuration and installation steps were performed:
 
 1. Network & Virtual Machine Configuration
 
 Installed Oracle VirtualBox and created two virtual machines: Windows 11 (Target) and Ubuntu Linux (Attacker).
+
+![Virtual Machines Setup Complete](./images/virtualsetupcomplete.png)
 
 Configured a NAT Network (subnet 10.0.2.0/24) in VirtualBox preferences to allow secure communication between both virtual machines while keeping them isolated from the physical home network.
 
