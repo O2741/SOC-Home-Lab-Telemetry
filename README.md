@@ -4,6 +4,9 @@
 
 This home lab was built to simulate network reconnaissance, analyze endpoint logs, and inspect network traffic in an isolated environment. The goal was to configure security monitoring tools and understand how host-based defenses impact network visibility.
 
+### Security & Configuration Note
+All IP addresses used in this lab (specifically the `10.0.2.0/24` subnet) belong to the private network range defined in RFC 1918. These are non-routable, isolated addresses used exclusively within the VirtualBox host-only/NAT network environment. No actual infrastructure or public IPs were exposed during this simulation.
+
 ## Technical Stack
 
 * Hypervisor: Oracle VirtualBox
