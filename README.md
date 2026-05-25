@@ -108,6 +108,8 @@ netsh advfirewall set allprofiles state off
 
 After disabling the firewall and scanning the correct Windows IP address (10.0.2.3), the packets successfully reached the host. This immediately generated an Event ID 3 (Network Connection Detected) log inside Sysmon, capturing the source IP, destination IP, and target port.
 
+![Sysmon Event 3](./images/sysmon_event3_part1.png)
+
 ## Packet Inspection with Wireshark
 
 I configured Wireshark on Ubuntu to capture traffic on the virtual network interface. To do this without root permissions, I reconfigured wireshark-common and managed dumpcap privileges.
