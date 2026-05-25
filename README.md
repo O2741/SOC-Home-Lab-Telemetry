@@ -43,12 +43,13 @@ The initial scan returned a filtered state. This happened because the default Wi
 
 ### Disabling Firewall for Telemetry Capture
 To allow the network traffic to reach the OS layer so Sysmon could log the activity, I disabled the firewall profiles via Windows CMD:
-```cmd
-netsh advfirewall set allprofiles state off
+```cmd netsh advfirewall set allprofiles state off
+
 Capturing Event ID 3
 After disabling the firewall and scanning the correct Windows IP address (10.0.2.3), the packets successfully reached the host. This immediately generated an Event ID 3 (Network Connection Detected) log inside Sysmon, capturing the source IP, destination IP, and target port.
+----
 
-3. Packet Inspection with Wireshark
+## 3. Packet Inspection with Wireshark
 I configured Wireshark on Ubuntu to capture traffic on the virtual network interface. To do this without root permissions, I reconfigured wireshark-common and managed dumpcap privileges.
 
 Plaintext FTP Credential Capture
@@ -62,3 +63,4 @@ Network Tools: Using Nmap flags and troubleshooting port states (open, closed, f
 Packet Analysis: Using Wireshark display filters and rebuilding TCP streams.
 
 Troubleshooting: Resolving Windows MMC snap-in issues and Linux packet capture permissions.
+
