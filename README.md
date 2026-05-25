@@ -118,6 +118,8 @@ Plaintext FTP Credential Capture
 
 To test unencrypted traffic, I configured a vsFTPd server on Ubuntu and connected to it from the Windows machine. Using Wireshark's "Follow TCP Stream" feature, I recovered the login credentials directly from the traffic stream because FTP transmits data in plain text.
 
+![Wireshark FTP](./images/wireshark_ftp.png)
+
 ## Conclusion and Skills Verified
 
 Log Analysis: Filtering and tracking Sysmon Event ID 1 and Event ID 3.
