@@ -21,7 +21,7 @@ All IP addresses used in this lab (specifically the `10.0.2.0/24` subnet) belong
 
 To replicate this environment, the following configuration and installation steps were performed:
 
-###Network & Virtual Machine Configuration
+### Network & Virtual Machine Configuration
 
 Installed Oracle VirtualBox and created two virtual machines: Windows 11 (Target) and Ubuntu Linux (Attacker).
 
