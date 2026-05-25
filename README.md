@@ -21,7 +21,7 @@ All IP addresses used in this lab (specifically the `10.0.2.0/24` subnet) belong
 
 To replicate this environment, the following configuration and installation steps were performed:
 
-1.Network & Virtual Machine Configuration
+###Network & Virtual Machine Configuration
 
 Installed Oracle VirtualBox and created two virtual machines: Windows 11 (Target) and Ubuntu Linux (Attacker).
 
@@ -33,7 +33,7 @@ Configured a NAT Network (subnet 10.0.2.0/24) in VirtualBox preferences to allow
 
 Assigned static IP addresses to ensure reliable communication (Windows host: 10.0.2.3).
 
-2.Windows Endpoint Setup (Sysmon Installation)
+###Windows Endpoint Setup (Sysmon Installation)
 
 Downloaded Microsoft Sysmon from the official Sysinternals suite.
 
@@ -46,7 +46,7 @@ sysmon.exe -i sysmonconfig-export.xml
 
 Verified that the Microsoft-Windows-Sysmon/Operational event log channel was successfully created and active in the Windows Event Viewer.
 
-3.Ubuntu Attacker Setup (Wireshark & vsFTPd Installation)
+###Ubuntu Attacker Setup (Wireshark & vsFTPd Installation)
 
 Installed Nmap and Wireshark on the Ubuntu VM:
 
