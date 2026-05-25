@@ -1,6 +1,6 @@
 # Home SOC Lab: Endpoint Telemetry and Network Forensics
 
-## Project Overview
+### Project Overview
 
 This home lab was built to simulate network reconnaissance, analyze endpoint logs, and inspect network traffic in an isolated environment. The goal was to configure security monitoring tools and understand how host-based defenses impact network visibility.
 
