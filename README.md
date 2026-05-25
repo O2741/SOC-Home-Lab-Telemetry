@@ -26,6 +26,8 @@ Installed Oracle VirtualBox and created two virtual machines: Windows 11 (Target
 
 Configured a NAT Network (subnet 10.0.2.0/24) in VirtualBox preferences to allow secure communication between both virtual machines while keeping them isolated from the physical home network.
 
+![Nat Network Setup Complete](./images/Natnetworksetupcomplete.png)
+
 Assigned static IP addresses to ensure reliable communication (Windows host: 10.0.2.3).
 
 2. Windows Endpoint Setup (Sysmon Installation)
