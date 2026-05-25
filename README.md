@@ -18,7 +18,7 @@ This home lab was built to simulate network reconnaissance, analyze endpoint log
 
 To replicate this environment, the following configuration and installation steps were performed:
 
-## Network & Virtual Machine Configuration
+Network & Virtual Machine Configuration
 
 Installed Oracle VirtualBox and created two virtual machines: Windows 11 (Target) and Ubuntu Linux (Attacker).
 
@@ -30,7 +30,7 @@ Configured a NAT Network (subnet 10.0.2.0/24) in VirtualBox preferences to allow
 
 Assigned static IP addresses to ensure reliable communication (Windows host: 10.0.2.3).
 
-## Windows Endpoint Setup (Sysmon Installation)
+Windows Endpoint Setup (Sysmon Installation)
 
 Downloaded Microsoft Sysmon from the official Sysinternals suite.
 
@@ -43,7 +43,7 @@ sysmon.exe -i sysmonconfig-export.xml
 
 Verified that the Microsoft-Windows-Sysmon/Operational event log channel was successfully created and active in the Windows Event Viewer.
 
-3. Ubuntu Attacker Setup (Wireshark & vsFTPd Installation)
+Ubuntu Attacker Setup (Wireshark & vsFTPd Installation)
 
 Installed Nmap and Wireshark on the Ubuntu VM:
 
@@ -80,7 +80,11 @@ I analyzed Event ID 1 (Process Creation) to check parent-child process relations
 
 Launching Notepad from Windows Search showed the parent process as taskhostw.exe.
 
+![Sysmon Notepad Taskhostw](./images/event_viewer_taskhostw.png)
+
 Launching commands like whoami successfully generated an Event ID 1 log, showing the exact image path and process ID.
+
+![Sysmon Whoami Event 1](./images/event_viewer_whoami_event1.png)
 
 ## Network Reconnaissance and Firewall Configuration
 
@@ -90,12 +94,15 @@ From the Ubuntu machine, I used Nmap to scan port 445 (SMB) on the Windows host.
 
 The initial scan returned a filtered state. This happened because the default Windows Defender Firewall profiles were active and silently dropping incoming TCP probes.
 
+![Nmap Filtered Scan](./images/nmap_filtered.png)
+
 Disabling Firewall for Telemetry Capture
 
 To allow the network traffic to reach the OS layer so Sysmon could log the activity, I disabled the firewall profiles via Windows CMD:
 
 netsh advfirewall set allprofiles state off
 
+![Firewall](./images/firewall.png)
 
 ## Capturing Event ID 3
 
