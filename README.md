@@ -69,11 +69,11 @@ sudo systemctl enable vsftpd
 
 ---
 
-### Endpoint Monitoring and Troubleshooting
+## Endpoint Monitoring and Troubleshooting
 
 I deployed Microsoft Sysmon on the Windows endpoint to gather system events.
 
-## Event Viewer Snap-in Crash
+### Event Viewer Snap-in Crash
 
 During log analysis, the Windows Event Viewer crashed with a System.InvalidOperationException error because of high log volume.
 
