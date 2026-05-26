@@ -67,7 +67,6 @@ sudo systemctl start vsftpd
 
 sudo systemctl enable vsftpd
 
----
 
 ## Endpoint Monitoring and Troubleshooting
 
