@@ -69,7 +69,7 @@ sudo systemctl enable vsftpd
 
 ---
 
-## Endpoint Monitoring and Troubleshooting
+### Endpoint Monitoring and Troubleshooting
 
 I deployed Microsoft Sysmon on the Windows endpoint to gather system events.
 
