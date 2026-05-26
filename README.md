@@ -81,7 +81,7 @@ During log analysis, the Windows Event Viewer crashed with a System.InvalidOpera
 
 ## Process Analysis (Event ID 1)
 
-I analyzed Event ID 1 (Process Creation) to check parent-child process relationships. Using the filtered logs, I verified the execution details of system tools:
+I analysed Event ID 1 (Process Creation) to check parent-child process relationships. Using the filtered logs, I verified the execution details of system tools:
 
 Launching Notepad from Windows Search showed the parent process as taskhostw.exe.
 
@@ -124,6 +124,23 @@ Plaintext FTP Credential Capture
 To test unencrypted traffic, I configured a vsFTPd server on Ubuntu and connected to it from the Windows machine. Using Wireshark's "Follow TCP Stream" feature, I recovered the login credentials directly from the traffic stream because FTP transmits data in plain text.
 
 ![Wireshark FTP](./images/wireshark_ftp.png)
+
+Analysis of the filtered state for 10.0.2.3
+
+The Command:
+nmap -Pn -p 445 10.0.2.3
+
+What it does:
+This command probes TCP port 445 (SMB) on the target host while bypassing the standard "ping" (host discovery) phase. By using -Pn, you force the scan to proceed even if the target is configured to ignore ICMP requests.
+
+Why is this happening:
+This is a direct result of an active Windows Defender Firewall profile on the target machine. The firewall is configured to silently drop incoming TCP packets destined for port 445. Because the firewall discards the packets instead of sending a rejection message, Nmap is left waiting for a response that never arrives, leading it to mark the port as filtered.
+
+What this tells you:
+
+Active Defence: The host is not simply unprotected; it has an active firewall policy that successfully obscures the service status from your network scans.
+
+Reduced Visibility: The firewall is effectively hiding the SMB service. You cannot confirm if the service is running or what version it is, because the firewall acts as a barrier that prevents your scan probes from reaching the target application.
 
 ## Conclusion and Skills Verified
 
