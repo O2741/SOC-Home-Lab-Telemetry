@@ -78,7 +78,7 @@ During log analysis, the Windows Event Viewer crashed with a System.InvalidOpera
 
 ![Event Viewer Crash](./images/event_viewer_error.png)
 
-## Process Analysis (Event ID 1)
+### Process Analysis (Event ID 1)
 
 I analysed Event ID 1 (Process Creation) to check parent-child process relationships. Using the filtered logs, I verified the execution details of system tools:
 
@@ -90,17 +90,17 @@ Launching commands like whoami successfully generated an Event ID 1 log, showing
 
 ![Sysmon Whoami Event 1](./images/event_viewer_whoami_event1.png)
 
-## Network Reconnaissance and Firewall Configuration
+### Network Reconnaissance and Firewall Configuration
 
 From the Ubuntu machine, I used Nmap to scan port 445 (SMB) on the Windows host.
 
-## Port Filtered State
+### Port Filtered State
 
 The initial scan returned a filtered state. This happened because the default Windows Defender Firewall profiles were active and silently dropping incoming TCP probes.
 
 ![Nmap Filtered Scan](./images/nmap_filtered.png)
 
-## Disabling Firewall for Telemetry Capture
+### Disabling Firewall for Telemetry Capture
 
 To allow the network traffic to reach the OS layer so Sysmon could log the activity, I disabled the firewall profiles via Windows CMD:
 
@@ -108,13 +108,13 @@ netsh advfirewall set allprofiles state off
 
 ![Firewall](./images/firewall.png)
 
-## Capturing Event ID 3
+### Capturing Event ID 3
 
 After disabling the firewall and scanning the correct Windows IP address (10.0.2.3), the packets successfully reached the host. This immediately generated an Event ID 3 (Network Connection Detected) log inside Sysmon, capturing the source IP, destination IP, and target port.
 
 ![Sysmon Event 3](./images/sysmon_event3_part1.png)
 
-## Packet Inspection with Wireshark
+### Packet Inspection with Wireshark
 
 I configured Wireshark on Ubuntu to capture traffic on the virtual network interface. To do this without root permissions, I reconfigured wireshark-common and managed dumpcap privileges.
 
