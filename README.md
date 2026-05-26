@@ -56,6 +56,7 @@ sudo apt install nmap wireshark -y
 Configured Wireshark to run without root privileges by reconfiguring the package and adding the user to the wireshark group:
 
 sudo dpkg-reconfigure wireshark-common
+
 sudo usermod -aG wireshark $USER
 
 Installed and configured vsFTPd (Very Secure FTP Daemon) to act as our plaintext FTP target:
