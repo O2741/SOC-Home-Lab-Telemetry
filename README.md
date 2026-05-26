@@ -138,6 +138,8 @@ To test unencrypted traffic, I configured a vsFTPd server on Ubuntu and connecte
 
 ![Wireshark FTP](./images/wireshark_ftp.png)
 
+This demonstration confirms that FTP is an inherently insecure protocol. Because the entire authentication exchange—including the username (hacekirs123) and password (jojo550)—is transmitted in cleartext, any attacker positioned on the same network segment can easily perform a Man-in-the-Middle (MitM) attack and intercept credentials using tools like Wireshark or tcpdump. To secure such communications, protocols like FTPS (FTP over SSL/TLS) or SFTP (SSH File Transfer Protocol) should be implemented, as they encrypt the command and data channels, rendering intercepted traffic unreadable.
+
 ## Conclusion and Skills Verified
 
 Log Analysis: Filtering and tracking Sysmon Event ID 1 and Event ID 3.
