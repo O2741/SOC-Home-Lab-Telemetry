@@ -2,7 +2,7 @@
 
 ### Project Overview
 
-This home lab was built to simulate network reconnaissance, analyze endpoint logs, and inspect network traffic in an isolated environment. The goal was to configure security monitoring tools and understand how host-based defenses impact network visibility.
+This home lab was built to simulate network reconnaissance, analyse endpoint logs, and inspect network traffic in an isolated environment. The goal was to configure security monitoring tools and understand how host-based defences impact network visibility.
 
 ### Security & Configuration Note
 All IP addresses used in this lab (specifically the `10.0.2.0/24` subnet) belong to the private network range defined in RFC 1918. These are non-routable, isolated addresses used exclusively within the VirtualBox host-only/NAT network environment. No actual infrastructure or public IPs were exposed during this simulation.
@@ -49,7 +49,9 @@ Verified that the Microsoft-Windows-Sysmon/Operational event log channel was suc
 
 Installed Nmap and Wireshark on the Ubuntu VM:
 
-sudo apt update && sudo apt install nmap wireshark -y
+sudo apt update
+
+sudo apt install nmap wireshark -y
 
 Configured Wireshark to run without root privileges by reconfiguring the package and adding the user to the wireshark group:
 
